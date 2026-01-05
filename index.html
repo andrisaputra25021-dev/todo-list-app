@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="to do list app" />
+    <meta name="keywords" content="to do list app" />
+    <meta name="author" content="andri saputra" />
+    <meta name="theme-colour" content="#00ffff" />
+    <link
+      rel="icon"
+      href="assets/todoApps-logo.png"
+      type="image/png"
+      sizes="35x35"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <title>To Do Apps</title>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <div class="profile-content">
+          <a href="#" id="profile-picture"
+            ><i class="fa-solid fa-circle-user"></i
+          ></a>
+          <h3 id="profile-username">User2026</h3>
+          <h4 id="profile-position">Jobseeker</h4>
+        </div>
+        <div id="menu"><i class="fa-solid fa-bars"></i></div>
+      </nav>
+    </header>
+
+    <section>
+      <div>
+        <h1>To Do List</h1>
+        <form action="" id="task-form">
+          <input type="text" id="task-input" />
+          <button type="submit">ADD</button>
+        </form>
+
+        <ul id="tasks-lists"></ul>
+      </div>
+    </section>
+    <script src="main.js"></script>
+  </body>
+</html>
