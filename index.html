@@ -37,13 +37,31 @@
 
     <section>
       <div class="home-content">
-        <h3 id="date"></h3>
+        <div class="realtime">
+          <h3 id="date"></h3>
+          <h4 id="time"></h4>
+        </div>
 
         <div class="todo-list-content">
-          <h1>Create a Task</h1>
+          <h1>Buat Tugas</h1>
           <form action="" id="task-form">
-            <textarea name="text" id="task-input"></textarea>
-            <button type="submit">ADD</button>
+            <textarea
+              name="text"
+              id="task-input"
+              placeholder="Tulis tugas disini..."
+              required
+            ></textarea>
+            <input type="date" id="task-date" required />
+            <input type="time" id="task-time" required />
+            <select name="priority" id="task-priority" required>
+              <option value="">
+                Level <span><i class="fa-solid fa-chevron-down"></i></span>
+              </option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+            <button type="submit">Tambahkan</button>
           </form>
 
           <ul id="task-list"></ul>

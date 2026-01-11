@@ -84,11 +84,23 @@ nav {
   color: #efece3;
 }
 
-#date {
-  margin: 1rem;
-  padding: 0.5rem;
+.realtime {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
   border: solid 3px var(--secondary-color);
-  border-radius: 10px;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  font-family: "Inter", sans-serif;
+  gap: 0.25rem;
+}
+
+.realtime > h4 {
+  background-color: rgba(143, 171, 212, 0.5);
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
 }
 
 .todo-list-content {
@@ -98,6 +110,13 @@ nav {
   align-items: center;
   padding: 1rem;
   border: solid 3px var(--secondary-color);
+  border-radius: 10px;
+  gap: 0.5rem;
+}
+
+form > textarea {
+  padding: 0.25rem 0.5rem;
+  width: 20rem;
   border-radius: 10px;
 }
 
