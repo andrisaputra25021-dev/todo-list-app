@@ -35,13 +35,59 @@ if (savedTasks) {
 
 //  rendering data to UI
 const taskListElement = document.getElementById("task-list");
+
 function renderTaskList() {
   taskListElement.innerHTML = "";
 
   data.forEach(function (item) {
     const listElement = document.createElement("li");
-    listElement.textContent = item.text;
+
+    if (item.completed) {
+      listElement.classList.add("item-checked");
+    }
+
+    const checkboxElement = document.createElement("input");
+    checkboxElement.type = "checkbox";
+    checkboxElement.checked = item.completed;
+    checkboxElement.dataset.id = item.id;
+
+    checkboxElement.addEventListener("change", function (event) {
+      const newTaskId = Number(event.target.dataset.id);
+      const newTaskTarget = data.find(function (item) {
+        return item.id === newTaskId;
+      });
+
+      if (newTaskTarget) {
+        newTaskTarget.completed = event.target.checked;
+
+        localStorage.setItem("taskList", JSON.stringify(data));
+        renderTaskList();
+      }
+    });
+
+    const textSpanElement = document.createElement("span");
+    textSpanElement.textContent = item.text;
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.dataset.id = item.id;
+
+    deleteButton.addEventListener("click", function (event) {
+      const newTaskId = Number(event.target.dataset.id);
+
+      data = data.filter(function (newTask) {
+        return newTask.id !== newTaskId;
+      });
+
+      localStorage.setItem("taskList", JSON.stringify(data));
+      renderTaskList();
+    });
+
     taskListElement.appendChild(listElement);
+
+    listElement.appendChild(checkboxElement);
+    listElement.appendChild(textSpanElement);
+    listElement.appendChild(deleteButton);
   });
 }
 renderTaskList();
@@ -72,7 +118,7 @@ form.addEventListener("submit", function (event) {
     date: date,
     time: time,
     priority: priority,
-    complete: false,
+    completed: false,
   };
 
   data.push(newTask);
