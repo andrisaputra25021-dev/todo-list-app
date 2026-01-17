@@ -1,4 +1,4 @@
-// setting waktu otomatis
+// setting jam otomatis
 const dateElement = document.getElementById("date");
 const timeElement = document.getElementById("time");
 
@@ -33,20 +33,33 @@ if (savedTasks) {
   data = JSON.parse(savedTasks);
 }
 
+//  rendering data to UI
+const taskListElement = document.getElementById("task-list");
+function renderTaskList() {
+  taskListElement.innerHTML = "";
+
+  data.forEach(function (item) {
+    const listElement = document.createElement("li");
+    listElement.textContent = item.text;
+    taskListElement.appendChild(listElement);
+  });
+}
+renderTaskList();
+
 // proses submit form
 const form = document.getElementById("task-form");
 const taskInput = document.getElementById("task-input");
 const taskDate = document.getElementById("task-date");
 const taskTime = document.getElementById("task-time");
-const taskPriorty = document.getElementById("task-priority");
+const taskPriority = document.getElementById("task-priority");
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  const text = taskInput.value;
+  const text = taskInput.value.trim();
   const date = taskDate.value;
   const time = taskTime.value;
-  const priority = taskPriorty.value;
+  const priority = taskPriority.value;
 
   if (!text || !date || !time || !priority) {
     alert("Semua field harus diisi!");
@@ -64,7 +77,7 @@ form.addEventListener("submit", function (event) {
 
   data.push(newTask);
 
-  localStorage("taskList", JSON.stringify(data));
-
+  localStorage.setItem("taskList", JSON.stringify(data));
+  renderTaskList();
   form.reset();
 });
